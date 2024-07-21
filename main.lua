@@ -1,51 +1,33 @@
-fuel = turtle.getFuelLevel()
+-- Mineturtle class
 
-steps = 0
+local Mineturtle = {}
 
-print(fuel)
-print(steps)
+-- constructor
 
-while(((fuel / 2) > (steps + 3))) do
-    turtle.digUp()
-    turtle.digDown()
-    turtle.turnLeft()
-    turtle.dig()
-    turtle.turnRight()
-    turtle.turnRight()
-    turtle.dig()
-    turtle.turnLeft()
-    turtle.dig()
-    turtle.forward()
-    steps = steps + 1
-    print(steps)
+function Mineturtle:new(feul)
+    local instance = setmetatable({}, Mineturtle)
+    instance.feul = feul
+    return instance
 end
 
-print(fuel)
+-- help methods 
 
-turtle.turnLeft()
-turtle.dig()
-turtle.digUp()
-turtle.digDown()
-turtle.forward()
-turtle.dig()
-turtle.digUp()
-turtle.digDown()
-turtle.forward()
-turtle.dig()
-turtle.digUp()
-turtle.digDown()
-turtle.turnLeft()
+function Mineturtle:get_block_type()
+    local has_block, data = turtle.inspect()
 
-while(fuel > 0) do
-    turtle.digUp()
-    turtle.digDown()
-    turtle.turnLeft()
-    turtle.dig()
-    turtle.turnRight()
-    turtle.turnRight()
-    turtle.dig()
-    turtle.turnLeft()
-    turtle.dig()
-    turtle.forward()
+    if has_block then
+        local information = textutils.serialise(data)
+        print(information)
+    end
+
 end
+
+-- main method
+
+function Mineturtle:dig()
+    get_block_type()
+end
+
+local mine_turtle = Mineturtle:new(turtle.getFuelLevel())
+mine_turtle:dig()
 
