@@ -25,6 +25,12 @@ end
 -- main method
 
 function Mineturtle:dig()
+
+    -- 1) see what block type it is
+    -- 2) dig when block required
+    -- 3) do this for up and down forward
+    -- // see shape of diging //
+    -- keep tracker to know how far you got to be able to return back
     get_block_type()
 end
 
