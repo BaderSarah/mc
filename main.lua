@@ -18,8 +18,21 @@ function Mineturtle:get_block_type()
 
     if has_block then
         local information = textutils.serialize(data)
-        print(information)
+        print(data.name)
     end
+end
+
+function Mineturtle:mine()
+    turtle.turnLeft()
+    turtle.dig()
+    turtle.turnRight()
+    turtle.dig()
+    turtle.digUp()
+    turtle.digDown()
+    turtle.turnRight()
+    turtle.dig()
+    turtle.turnLeft()
+    turtle.forward()
 end
 
 -- main method
@@ -31,6 +44,27 @@ function Mineturtle:dig()
     -- // see shape of digging //
     -- keep tracker to know how far you got to be able to return back
     self:get_block_type()
+    while(turtle.has_block and (fuel > (fuel/2 + 3))) do
+        self:mine()
+    end
+
+
+    -- go back
+
+    turtle.turnLeft()
+    turtle.dig()
+    turtle.forward()
+    turtle.dig()
+    turtle.forward()
+    turtle.dig()
+    turtle.forward()
+    turtle.turnLeft()
+    turtle.dig()
+    turtle.forward()
+
+    while(fuel > 0) do
+        self:mine()
+    end
 end
 
 local mine_turtle = Mineturtle:new(turtle.getFuelLevel())
