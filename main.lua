@@ -62,7 +62,7 @@ function Mineturtle:dig()
     turtle.dig()
     turtle.forward()
 
-    while(fuel > 0) do
+    while(turtle.getFuelLevel() > 0) do
         self:mine()
     end
 end
