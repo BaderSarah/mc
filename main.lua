@@ -44,7 +44,7 @@ function Mineturtle:dig()
     -- // see shape of digging //
     -- keep tracker to know how far you got to be able to return back
     self:get_block_type()
-    while(turtle.has_block and (fuel > (fuel/2 + 3))) do
+    while(turtle.has_block() and (fuel > (fuel/2 + 3))) do
         self:mine()
     end
 
