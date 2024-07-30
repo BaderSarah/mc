@@ -43,7 +43,8 @@ function Mineturtle:dig()
     -- 3) do this for up and down forward
     -- // see shape of digging //
     -- keep tracker to know how far you got to be able to return back
-    while(turtle.getFuelLevel() > ((turtle.getFuelLevel()/2) + 3)) do -- no detect bcs water or lava
+    local return_value = turtle.getFuelLevel()/2 + 3; 
+    while(turtle.getFuelLevel() > return_value) do -- no detect bcs water or lava
         self:get_block_type()
         self:mine()
     end
